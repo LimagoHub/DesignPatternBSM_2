@@ -23,6 +23,20 @@ public class AbstractTrafficLightState implements TrafficLightState {
 	public TrafficLight getTrafficLight() {
 		return trafficLight;
 	}
+
+	@Override
+	public void switchOn() {
+		throw new UnsupportedOperationException("Upps");
+
+		
+	}
+
+	@Override
+	public void switchOff() {
+		throw new UnsupportedOperationException("Upps");
+
+		
+	}
 	
 	
 
