@@ -5,6 +5,7 @@ import de.mitarbeiter.Gehaltsempfänger;
 import de.mitarbeiter.Lohnempfänger;
 import de.mitarbeiter.visitors.PrintVisitor;
 import de.mitarbeiter.visitors.ResetArbeitszeitVisitor;
+import de.mitarbeiter.visitors.StatistikVisitor;
 
 public class Main {
 
@@ -21,7 +22,10 @@ public class Main {
 		
 		firma.iterate(new PrintVisitor());
 		
-		firma.iterate(new ResetArbeitszeitVisitor());
+
+		firma.iterate(new StatistikVisitor());
+		
+		
 		
 		firma.iterate(new PrintVisitor());
 	}
