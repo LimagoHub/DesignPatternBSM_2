@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Person implements Serializable{
 	
-	private String vorname, nachname;
+	private String vorname, nachname, anrede="Divers";
 	
 	public Person() {
 		this("John","Doe");
@@ -31,6 +31,29 @@ public class Person implements Serializable{
 		this.nachname = nachname;
 	}
 	
+	
+
+	public String getAnrede() {
+		return anrede;
+	}
+
+	public void setAnrede(String anrede) {
+		this.anrede = anrede;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Person [vorname=");
+		builder.append(vorname);
+		builder.append(", nachname=");
+		builder.append(nachname);
+		builder.append(", anrede=");
+		builder.append(anrede);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	
 	
 
