@@ -4,6 +4,11 @@ public class CommandFactory {
 	
 	public static Command createCommand(String eingabe) {
 		
+		// Nach Reflektion umbauen
+		// Fehler werden gefangen und null zurück gegeben
+		// Wenn Fabrik fertig ist zwei neue Commands bauen SubCommand und ClearCommand 
+		
+		
 		try {
 			Command retval = null;
 			String [] tokens = eingabe.split(" ");
