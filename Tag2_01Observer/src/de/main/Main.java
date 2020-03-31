@@ -1,5 +1,7 @@
 package de.main;
 
+import de.common.PropertyChangeEvent;
+import de.common.PropertyChangeListener;
 import de.tiere.PigTooFatListener;
 import de.tiere.Schwein;
 
@@ -14,6 +16,16 @@ public class Main {
 	private void run() {
 		Schwein piggy = new Schwein("Miss Piggy");
 		piggy.addPigTooFatListener(e->metzger.schlachten(e));
+		
+		piggy.addPropertyChangeListener(new PropertyChangeListener() {
+			
+			@Override
+			public void propertyChanged(PropertyChangeEvent event) {
+				System.out.println(event);
+				
+			}
+		});
+		
 		for (int i = 0; i < 15; i++) {
 			piggy.fressen();
 		}
