@@ -4,7 +4,7 @@ public class GreenState extends AbstractTrafficLightColorState {
 
 	public GreenState(TrafficLight trafficLight) {
 		super(trafficLight);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
