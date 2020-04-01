@@ -1,6 +1,6 @@
 package de.composite;
 
-public class Leaf extends AbstractNode {
+public class Leaf extends AbstractNode { // Konto besteht label und saldo
 
 	public Leaf(String label) {
 		super(label);

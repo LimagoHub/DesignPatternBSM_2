@@ -28,9 +28,11 @@ public class Main {
 		e1_2.append(e2_4);
 		
 		travers(root);
+		//e1_1.print();
+		
 	}
 	
-	public static void travers(AbstractNode node) {
+	public static void travers(AbstractNode node) { // Statt der travers, eine Printmethode im AbstractNode
 		System.out.println(node);
 		for (AbstractNode child : node.getChildren()) {
 			travers(child);

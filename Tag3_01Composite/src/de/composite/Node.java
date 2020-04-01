@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Node extends AbstractNode {
+public class Node extends AbstractNode { // KontoGruppe ist container für KontoGruppen und Konten. Hat kein saldo
 	
 	private List<AbstractNode> children = new ArrayList<>();
 
