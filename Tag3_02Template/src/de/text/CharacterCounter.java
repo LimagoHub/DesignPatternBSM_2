@@ -9,6 +9,7 @@ public class CharacterCounter extends AbstractCounter {
 		counter ++;
 
 	}
+
 	
 	
 

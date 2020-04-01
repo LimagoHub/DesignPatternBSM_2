@@ -3,7 +3,7 @@ package de.text;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileCopierer extends FileProcessor {
+public class FileCopierer implements CharacterHandler{
 	
 	private FileWriter out;
 	
