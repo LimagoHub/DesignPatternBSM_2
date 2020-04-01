@@ -1,13 +1,8 @@
 package de.text;
 
-public class CharacterCounter extends FileProcessor {
+public class CharacterCounter extends AbstractCounter {
 	
-	private int counter;
-	
-	@Override
-	public void init() {
-		counter = 0;
-	}
+
 
 	@Override
 	public void process(char c) {
@@ -15,9 +10,6 @@ public class CharacterCounter extends FileProcessor {
 
 	}
 	
-	@Override
-	public void close() {
-		System.out.println(counter);
-	}
+	
 
 }

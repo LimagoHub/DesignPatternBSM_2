@@ -1,8 +1,8 @@
 package de.text;
 
-public class LineCounter extends FileProcessor {
+public class LineCounter extends AbstractCounter {
 
-	private int counter = 0;
+	
 	
 	@Override
 	public void process(char c) {
@@ -10,8 +10,5 @@ public class LineCounter extends FileProcessor {
 
 	}
 
-	@Override
-	public void close() {
-		System.out.println(counter);
-	}
+
 }
