@@ -1,5 +1,7 @@
 package de.composite;
 
+import de.composite.vistors.BankVisitor;
+
 public class Konto extends AbstractBankNode { // Konto besteht label und saldo
 
 	
@@ -35,6 +37,14 @@ public class Konto extends AbstractBankNode { // Konto besteht label und saldo
 		builder.append(getLabel());
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+
+	@Override
+	public void accept(BankVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 

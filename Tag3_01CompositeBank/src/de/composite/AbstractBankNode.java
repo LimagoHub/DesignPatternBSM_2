@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import de.composite.vistors.BankVisitor;
+
 public abstract class AbstractBankNode {
 	
 	private String label;
@@ -69,5 +71,13 @@ public abstract class AbstractBankNode {
 		for (AbstractBankNode child : getChildren()) {
 			child.iteratorImpl(list);
 		}
+	}
+	
+	public abstract void accept(BankVisitor visitor);
+	
+	public void iterate(BankVisitor visitor) {
+		visitor.init();
+		iterator().forEachRemaining(e->e.accept(visitor));
+		visitor.destroy();
 	}
 }

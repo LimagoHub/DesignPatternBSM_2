@@ -1,8 +1,10 @@
 package de.main;
 
-import de.composite.AbstractBankNode;
 import de.composite.Konto;
 import de.composite.KontoGruppe;
+import de.composite.vistors.PrintVisitor;
+import de.composite.vistors.SummenVisitor;
+import de.composite.vistors.ZinsenVisitor;
 
 public class Main {
 
@@ -30,7 +32,10 @@ public class Main {
 		
 		//root.print();
 
-		root.iterate(new PrintVisitor());
+		e1_1.iterate(new SummenVisitor());
+		
+//		root.iterate(new ZinsenVisitor(0.1));
+//		root.iterate(new PrintVisitor());
 	}
 	
 	

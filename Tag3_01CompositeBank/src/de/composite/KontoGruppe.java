@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import de.composite.vistors.BankVisitor;
+
 public class KontoGruppe extends AbstractBankNode { // KontoGruppe ist container für KontoGruppen und Konten. Hat kein saldo
 	
 	private List<AbstractBankNode> children = new ArrayList<>();
@@ -41,5 +43,9 @@ public class KontoGruppe extends AbstractBankNode { // KontoGruppe ist container
 		children.remove(node);
 	}
 	
-	
+	@Override
+	public void accept(BankVisitor visitor) {
+		visitor.visit(this);
+		
+	}
 }
