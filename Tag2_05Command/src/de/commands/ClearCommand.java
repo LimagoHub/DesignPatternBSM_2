@@ -1,14 +1,15 @@
 package de.commands;
 
 import de.math.Calculator;
+import de.math.CalculatorMemento;
 
 public class ClearCommand extends AbstractCommand {
 	
-	private double memory;
+	private CalculatorMemento memento;
 
 	@Override
 	public void execute() {
-		memory = Calculator.getInstance().getMemory();
+		memento = Calculator.getInstance().getMemento();
 		Calculator.getInstance().clear();
 
 	}
@@ -16,7 +17,7 @@ public class ClearCommand extends AbstractCommand {
 	
 	@Override
 	public void undo() {
-		Calculator.getInstance().setMemory(memory);
+		Calculator.getInstance().setMemento(memento);
 	}
 
 	
