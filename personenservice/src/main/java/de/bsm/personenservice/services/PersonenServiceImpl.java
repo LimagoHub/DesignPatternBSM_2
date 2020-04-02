@@ -26,8 +26,34 @@ public class PersonenServiceImpl {
 	// speichern in Datenbank 
 	
 	public void speichern(Person person) throws PersonenServiceException {
+		try {
+			checkPerson(person);
+			repository.save(person);
+		} catch (RuntimeException e) {
+			
+			throw new PersonenServiceException("Der Datenbankdienst ist nicht bereit.", e);
+		}
+	}
+
+
+
+	private void checkPerson(Person person) throws PersonenServiceException {
+		validatatePerson(person);
+		businessCheck(person);
+	}
+
+
+
+	private void businessCheck(Person person) throws PersonenServiceException {
+		if(person.getVorname().equals("Attila")) throw new PersonenServiceException("Antipath");
+	}
+
+
+
+	private void validatatePerson(Person person) throws PersonenServiceException {
 		if(person == null) throw new PersonenServiceException("Parameter darf nicht null sein.");
 		if(person.getVorname()==null || person.getVorname().length() < 2) throw new PersonenServiceException("Vorname muss min. 2 Zeichen haben.");
+		if(person.getNachname()==null || person.getNachname().length() < 2) throw new PersonenServiceException("Nachname muss min. 2 Zeichen haben.");
 	}
 
 }
