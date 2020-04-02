@@ -24,7 +24,7 @@ public class Schwein{
 		if(name == null || "elsa".equalsIgnoreCase(name)) throw new IllegalArgumentException("Falscher Name");
 		this.name = name;
 	}
-
+ 
 	public int getGewicht() {
 		return gewicht;
 	}
