@@ -71,7 +71,6 @@ public class Euro2DollarPresenter implements IEuro2DollarPresenter {
 	@Override
 	public void updateRechnenActionState() {
 		
-		
 	}
 
 }
