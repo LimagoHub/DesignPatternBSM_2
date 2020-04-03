@@ -1,16 +1,18 @@
 package de.bsm.personenservice.services;
 
+import java.util.List;
+
 import de.bsm.personenservice.persistence.Person;
 import de.bsm.personenservice.persistence.PersonenRespository;
 
 public class PersonenServiceImpl {
 	
 	private final PersonenRespository repository;
+	private final List<String> antipathen;
 	
 	
-	
-	public PersonenServiceImpl(PersonenRespository repository) {
-		super();
+	public PersonenServiceImpl(PersonenRespository repository, final List<String> antipathen) {
+		this.antipathen = antipathen;
 		this.repository = repository;
 	}
 
@@ -28,11 +30,20 @@ public class PersonenServiceImpl {
 	public void speichern(Person person) throws PersonenServiceException {
 		try {
 			checkPerson(person);
+			
+			// Person soll eine eindeutige ID erhalten
+			
 			repository.save(person);
 		} catch (RuntimeException e) {
 			
 			throw new PersonenServiceException("Der Datenbankdienst ist nicht bereit.", e);
 		}
+	}
+	
+	
+	// Vorname John nicht John Boy
+	public List<Person> findeAlleJohns() {
+		return null;
 	}
 
 
@@ -45,7 +56,8 @@ public class PersonenServiceImpl {
 
 
 	private void businessCheck(Person person) throws PersonenServiceException {
-		if(person.getVorname().equals("Attila")) throw new PersonenServiceException("Antipath");
+		if(antipathen.contains(person.getVorname())) throw new PersonenServiceException("Antipath");
+		
 	}
 
 

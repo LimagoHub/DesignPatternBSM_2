@@ -11,10 +11,15 @@ import de.bsm.personenservice.persistence.Person;
 import de.bsm.personenservice.persistence.PersonenRespository;
 import static org.mockito.Mockito.*;
 
+import java.util.List;
+
 @RunWith(MockitoJUnitRunner.class)
 public class PersonenServiceImplTest {
 	@Mock
 	private PersonenRespository repositoryMock;
+	@Mock
+	private List<String> antipathenMock;
+	
 	@InjectMocks
 	private PersonenServiceImpl objectUnderTest;
 	
@@ -73,14 +78,24 @@ public class PersonenServiceImplTest {
 	}
  
 	@Test
-	public void speichern_wrongVornameAttila_throwsPersonenServiceException() throws Exception {
+	public void speichern_wrongVorname_throwsPersonenServiceException() throws Exception {
 		try {
-			Person person = new Person("Attila", "Doe");
+			// Arrange
+			when(antipathenMock.contains(anyString())).thenReturn(true);
+			
+			Person person = new Person("John", "Doe");
+			
+			// Action
 			objectUnderTest.speichern(person);
+			
+			
+			
 			Assert.fail("Upps");
 		} catch (PersonenServiceException e) {
 			Assert.assertEquals("Antipath", e.getMessage());
+			
 		}
+		verify(antipathenMock,times(1)).contains("John");
 	}
 
 	@Test
@@ -92,7 +107,7 @@ public class PersonenServiceImplTest {
 			doThrow(new ArrayIndexOutOfBoundsException()).when(repositoryMock).save((Person) anyObject());
 			
 			// Methode nicht "void" ist und eine Exception simuliert werden soll
-			when(repositoryMock.findById(anyString())).thenThrow(new RuntimeException());
+			when(antipathenMock.contains(anyString())).thenReturn(false);
 			
 			Person person = new Person("John", "Doe");
 			objectUnderTest.speichern(person);
@@ -105,6 +120,7 @@ public class PersonenServiceImplTest {
 	@Test
 	public void speichern_HappyDay_PersonIsSaved() throws Exception {
 		
+			when(antipathenMock.contains(anyString())).thenReturn(false);
 					
 			Person person = new Person("John", "Doe");
 			objectUnderTest.speichern(person);
