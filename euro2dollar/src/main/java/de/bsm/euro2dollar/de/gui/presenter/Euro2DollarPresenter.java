@@ -48,15 +48,7 @@ public class Euro2DollarPresenter implements IEuro2DollarPresenter {
 	@Override
 	public void rechnen() {
 	
-		try {
-			double euro = Double.parseDouble(view.getEuro());
-			double dollar = model.calculateEuro2Dollar(euro);
-			view.setDollar(Double.toString(dollar));
-		} catch (NullPointerException | NumberFormatException e) {
-			view.setDollar("Keine Zahl");
-		} catch (RuntimeException e) {
-			view.setDollar("interner Serverfehler");
-		}
+		
 		
 	}
 	
@@ -73,20 +65,13 @@ public class Euro2DollarPresenter implements IEuro2DollarPresenter {
 	 */
 	@Override
 	public void populateItems() {
-		view.setEuro("0.0");
-		view.setDollar("0.0");
-		view.setRechnenEnabled(true);
+		
 	}
 
 	@Override
 	public void updateRechnenActionState() {
 		
-		try {
-			Double.parseDouble(view.getEuro());
-			view.setRechnenEnabled(true);
-		} catch (NumberFormatException e) {
-			view.setRechnenEnabled(false);
-		}
+		
 	}
 
 }
